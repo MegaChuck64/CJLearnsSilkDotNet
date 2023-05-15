@@ -5,6 +5,10 @@ VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CJLearnsSilkDotNet", "CJLearnsSilkDotNet\CJLearnsSilkDotNet.csproj", "{9967CA31-B4FE-44E8-8037-F4D8B30A2FB5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CJ.SilkEngine", "CJ.SilkEngine\CJ.SilkEngine.csproj", "{AF1666AF-6B4E-4DD9-A744-1B95BD5F66A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CJ.SilkEngine.Test", "CJ.SilkEngine.Test\CJ.SilkEngine.Test.csproj", "{8CFD121C-C8AB-41BE-885D-284287E9D7A5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{9967CA31-B4FE-44E8-8037-F4D8B30A2FB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9967CA31-B4FE-44E8-8037-F4D8B30A2FB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9967CA31-B4FE-44E8-8037-F4D8B30A2FB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF1666AF-6B4E-4DD9-A744-1B95BD5F66A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF1666AF-6B4E-4DD9-A744-1B95BD5F66A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF1666AF-6B4E-4DD9-A744-1B95BD5F66A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF1666AF-6B4E-4DD9-A744-1B95BD5F66A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CFD121C-C8AB-41BE-885D-284287E9D7A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CFD121C-C8AB-41BE-885D-284287E9D7A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CFD121C-C8AB-41BE-885D-284287E9D7A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CFD121C-C8AB-41BE-885D-284287E9D7A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
