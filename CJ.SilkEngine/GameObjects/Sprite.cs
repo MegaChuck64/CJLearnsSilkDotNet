@@ -13,8 +13,7 @@ public class Sprite : Component
     public VertexArrayObject<float, uint> Vao { get; private set; }
     public Graphics.Texture Texture { get; private set; }
     public Graphics.Shader Shader { get; private set; }
-
-    public Rectangle<float> Bounds { get; set; }
+    
     public Rectangle<float> Source { get; set; }
 
     public float Z { get; set; }
@@ -25,7 +24,7 @@ public class Sprite : Component
 
     private float[] Vertices => 
         GetVerticesFromRectangle(
-            Bounds, 
+            Owner.Bounds, 
             Source, 
             new Vector2(Texture.Width, Texture.Height), 
             Owner.Game.GameWindow.Size,
@@ -66,12 +65,11 @@ public class Sprite : Component
         return vertices;
     }
 
-    public Sprite(GameObject owner, string path, Rectangle<float> bounds, Rectangle<float> source, float z) : base(owner, true)
+    public Sprite(GameObject owner, string path, Rectangle<float> source, float z) : base(owner, true)
     {
         if (Owner == null || Owner.Game.Context == null) 
             throw new InvalidOperationException("Cannot create sprite without a valid game context.");
-
-        Bounds = bounds;
+        
         Source = source;
         Z = z;
         Texture = new Graphics.Texture(Owner.Game.Context, path);

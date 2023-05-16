@@ -2,7 +2,6 @@
 using Silk.NET.Maths;
 using System.Drawing;
 using CJ.SilkEngine.GameObjects;
-using Silk.NET.OpenGL;
 
 namespace CJ.SilkEngine.Test;
 
@@ -20,8 +19,7 @@ public class MainGame : CJGame
         testGo = new GameObject(this, "Test GO", new Rectangle<float>(100, 100, 128f, 128f));
         var sprt = new Sprite(
             testGo, 
-            Path.Combine("Assets", "Textures", "demo.png"), 
-            new Rectangle<float>(0f, 0f, 128f, 128f),
+            Path.Combine("Assets", "Textures", "demo.png"),
             new Rectangle<float>(0f, 0f, 64f, 64f),
             0.1f);
 
@@ -36,30 +34,28 @@ public class MainGame : CJGame
     {
         if (Input == null || Input.Keyboards.Count == 0)
             return;
-        
-        if (Input.Keyboards[0].IsKeyPressed(Key.D))
+
+        var keyboard = Input.Keyboards[0];
+        var bounds = testGo.Bounds;
+
+        if (keyboard.IsKeyPressed(Key.W))
         {
-            if (testGo.Components.First(t => t is Sprite) is Sprite spr)
-                spr.Bounds = new Rectangle<float>(spr.Bounds.Origin.X + speed * dt, spr.Bounds.Origin.Y, spr.Bounds.Size);
+            bounds.Origin.Y -= speed * dt;            
         }
-        
-        if (Input.Keyboards[0].IsKeyPressed(Key.A))
+        if (keyboard.IsKeyPressed(Key.S))
         {
-            if (testGo.Components.First(t => t is Sprite) is Sprite spr)
-                spr.Bounds = new Rectangle<float>(spr.Bounds.Origin.X - speed * dt, spr.Bounds.Origin.Y, spr.Bounds.Size);
+            bounds.Origin.Y += speed * dt;
+        }
+        if (keyboard.IsKeyPressed(Key.A))
+        {
+            bounds.Origin.X -= speed * dt;
+        }
+        if (keyboard.IsKeyPressed(Key.D))
+        {
+            bounds.Origin.X += speed * dt;
         }
 
-        if (Input.Keyboards[0].IsKeyPressed(Key.W))
-        {
-            if (testGo.Components.First(t => t is Sprite) is Sprite spr)
-                spr.Bounds = new Rectangle<float>(spr.Bounds.Origin.X, spr.Bounds.Origin.Y - speed * dt, spr.Bounds.Size);
-        }
-
-        if (Input.Keyboards[0].IsKeyPressed(Key.S))
-        {
-            if (testGo.Components.First(t => t is Sprite) is Sprite spr)
-                spr.Bounds = new Rectangle<float>(spr.Bounds.Origin.X, spr.Bounds.Origin.Y + speed * dt, spr.Bounds.Size);
-        }
+        testGo.Bounds = bounds;
         
     }
     
