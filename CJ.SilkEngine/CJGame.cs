@@ -83,6 +83,17 @@ public abstract class CJGame : IDisposable
 
     private void GameWindow_Closing()
     {
+        Context?.Dispose();
+        Input?.Dispose();
+
+        foreach (var gameObject in GameObjects)
+        {
+            gameObject.Dispose();
+        }
+
+        GameObjects.Clear();
+
+        
         Close();
     }
 
@@ -109,18 +120,7 @@ public abstract class CJGame : IDisposable
             if (disposing)
             {
                 // TODO: dispose managed state (managed objects)
-                
-                GameWindow.Dispose();
-                Context?.Dispose();
-                Input?.Dispose();
-
-                foreach (var gameObject in GameObjects)
-                {
-                    gameObject.Dispose();
-                }
-
-                GameObjects.Clear();
-                
+                GameWindow?.Dispose(); 
             }
 
             disposedValue = true;

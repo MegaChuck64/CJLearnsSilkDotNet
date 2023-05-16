@@ -9,6 +9,7 @@ namespace CJ.SilkEngine.Test;
 public class MainGame : CJGame
 {
     GameObject testGo;
+    float speed = 128f;
     public MainGame(int width, int height, string title, Color backgroundColor) : base(width, height, title, backgroundColor)
     {
     }
@@ -33,28 +34,31 @@ public class MainGame : CJGame
 
     public override void Update(float dt)
     {
+        if (Input == null || Input.Keyboards.Count == 0)
+            return;
+        
         if (Input.Keyboards[0].IsKeyPressed(Key.D))
         {
             if (testGo.Components.First(t => t is Sprite) is Sprite spr)
-                spr.Bounds = new Rectangle<float>(spr.Bounds.Origin.X + 10 * dt, spr.Bounds.Origin.Y, spr.Bounds.Size);
+                spr.Bounds = new Rectangle<float>(spr.Bounds.Origin.X + speed * dt, spr.Bounds.Origin.Y, spr.Bounds.Size);
         }
         
         if (Input.Keyboards[0].IsKeyPressed(Key.A))
         {
             if (testGo.Components.First(t => t is Sprite) is Sprite spr)
-                spr.Bounds = new Rectangle<float>(spr.Bounds.Origin.X - 10 * dt, spr.Bounds.Origin.Y, spr.Bounds.Size);
+                spr.Bounds = new Rectangle<float>(spr.Bounds.Origin.X - speed * dt, spr.Bounds.Origin.Y, spr.Bounds.Size);
         }
 
         if (Input.Keyboards[0].IsKeyPressed(Key.W))
         {
             if (testGo.Components.First(t => t is Sprite) is Sprite spr)
-                spr.Bounds = new Rectangle<float>(spr.Bounds.Origin.X, spr.Bounds.Origin.Y - 10 * dt, spr.Bounds.Size);
+                spr.Bounds = new Rectangle<float>(spr.Bounds.Origin.X, spr.Bounds.Origin.Y - speed * dt, spr.Bounds.Size);
         }
 
         if (Input.Keyboards[0].IsKeyPressed(Key.S))
         {
             if (testGo.Components.First(t => t is Sprite) is Sprite spr)
-                spr.Bounds = new Rectangle<float>(spr.Bounds.Origin.X, spr.Bounds.Origin.Y + 10 * dt, spr.Bounds.Size);
+                spr.Bounds = new Rectangle<float>(spr.Bounds.Origin.X, spr.Bounds.Origin.Y + speed * dt, spr.Bounds.Size);
         }
         
     }

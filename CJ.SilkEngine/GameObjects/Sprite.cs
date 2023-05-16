@@ -119,9 +119,9 @@ public class Sprite : Component
 
     public override void Dispose(bool disposing)
     {
+        Vao.Dispose();
         vbo.Dispose();
         ebo.Dispose();
-        Vao.Dispose();
         Shader.Dispose();
         Texture.Dispose();
     }
