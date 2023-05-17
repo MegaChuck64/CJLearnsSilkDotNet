@@ -67,22 +67,22 @@ public class Sprite : Component
 
     public Sprite(GameObject owner, string path, Rectangle<float> source, float z) : base(owner, true)
     {
-        if (Owner == null || Owner.Game.Context == null) 
+        if (Owner == null || Owner.Game.GraphicsContext == null) 
             throw new InvalidOperationException("Cannot create sprite without a valid game context.");
         
         Source = source;
         Z = z;
-        Texture = new Graphics.Texture(Owner.Game.Context, path);
+        Texture = new Graphics.Texture(Owner.Game.GraphicsContext, path);
         
-        ebo = new BufferObject<uint>(Owner.Game.Context, Indices, BufferTargetARB.ElementArrayBuffer);
-        vbo = new BufferObject<float>(Owner.Game.Context, Vertices, BufferTargetARB.ArrayBuffer);
-        Vao = new VertexArrayObject<float, uint>(Owner.Game.Context, vbo, ebo);
+        ebo = new BufferObject<uint>(Owner.Game.GraphicsContext, Indices, BufferTargetARB.ElementArrayBuffer);
+        vbo = new BufferObject<float>(Owner.Game.GraphicsContext, Vertices, BufferTargetARB.ArrayBuffer);
+        Vao = new VertexArrayObject<float, uint>(Owner.Game.GraphicsContext, vbo, ebo);
 
         Vao.VertexAttributePointer(0, 3, VertexAttribPointerType.Float, 5, 0);
         Vao.VertexAttributePointer(1, 2, VertexAttribPointerType.Float, 5, 3);
 
         Shader = new Graphics.Shader(
-            Owner.Game.Context, 
+            Owner.Game.GraphicsContext, 
             Path.Combine("Assets", "Shaders", "defaultTexture.vert"),
             Path.Combine("Assets", "Shaders", "defaultTexture.frag"));
 
@@ -90,11 +90,11 @@ public class Sprite : Component
 
     public override void Update(float dt)
     {
-        if (Owner == null || Owner.Game.Context == null) throw new Exception("Cannot update sprite without a valid game context.");
+        if (Owner == null || Owner.Game.GraphicsContext == null) throw new Exception("Cannot update sprite without a valid game context.");
         
         vbo.Dispose(); // Dispose the old buffer object
 
-        vbo = new BufferObject<float>(Owner.Game.Context, Vertices, BufferTargetARB.ArrayBuffer); // Create a new buffer object
+        vbo = new BufferObject<float>(Owner.Game.GraphicsContext, Vertices, BufferTargetARB.ArrayBuffer); // Create a new buffer object
 
         Vao.Bind();
         vbo.Bind();
@@ -104,7 +104,7 @@ public class Sprite : Component
 
     public unsafe override void Render()
     {
-        if (Owner == null || Owner.Game.Context == null) throw new Exception("Cannot render sprite without a valid game context.");
+        if (Owner == null || Owner.Game.GraphicsContext == null) throw new Exception("Cannot render sprite without a valid game context.");
         
         Vao.Bind();
         Shader.Use();
@@ -112,7 +112,7 @@ public class Sprite : Component
         Texture.Bind(TextureUnit.Texture0);
         Shader.SetUniform("uTexture0", 0);
 
-        Owner.Game.Context.DrawElements(PrimitiveType.Triangles, (uint)Indices.Length, DrawElementsType.UnsignedInt, null);
+        Owner.Game.GraphicsContext.DrawElements(PrimitiveType.Triangles, (uint)Indices.Length, DrawElementsType.UnsignedInt, null);
     }
 
     public override void Dispose(bool disposing)

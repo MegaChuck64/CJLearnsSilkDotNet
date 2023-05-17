@@ -1,7 +1,5 @@
 ﻿using Silk.NET.Input;
-using Silk.NET.Maths;
 using System.Drawing;
-using CJ.SilkEngine.GameObjects;
 
 namespace CJ.SilkEngine.Test;
 
@@ -33,5 +31,9 @@ public class MainGame : CJGame
     public override void Close()
     {
     }
+
+    public static uint UintFromColor(Color col) =>
+        (uint)((col.R) | (col.G << 8) | (col.B << 16) | (col.A << 24));
+    
 
 }

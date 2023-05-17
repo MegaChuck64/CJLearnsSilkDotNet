@@ -15,7 +15,7 @@ public abstract class CJGame : IDisposable
 
     public IInputContext? Input { get; private set; }
 
-    public GL? Context { get; private set; }
+    public GL? GraphicsContext { get; private set; }
 
     public Color Backgroundcolor { get; private set; }
 
@@ -52,8 +52,8 @@ public abstract class CJGame : IDisposable
             Input.Keyboards[i].KeyDown += OnKeyDown;
         }
 
-        Context = GameWindow.CreateOpenGL();
-        Context.ClearColor(Backgroundcolor);
+        GraphicsContext = GameWindow.CreateOpenGL();
+        GraphicsContext.ClearColor(Backgroundcolor);
 
         Load();
     }
@@ -70,7 +70,7 @@ public abstract class CJGame : IDisposable
 
     private void GameWindow_Render(double dt)
     {
-        Context?.Clear(ClearBufferMask.ColorBufferBit);
+        GraphicsContext?.Clear(ClearBufferMask.ColorBufferBit);
 
         foreach (var go in GameObjects)
         {
@@ -83,7 +83,7 @@ public abstract class CJGame : IDisposable
 
     private void GameWindow_Closing()
     {
-        Context?.Dispose();
+        GraphicsContext?.Dispose();
         Input?.Dispose();
 
         foreach (var gameObject in GameObjects)
