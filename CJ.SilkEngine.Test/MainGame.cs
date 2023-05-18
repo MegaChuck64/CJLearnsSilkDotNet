@@ -1,6 +1,9 @@
 ﻿using Silk.NET.Input;
 using System.Drawing;
 
+using CJ.SilkEngine.Test.Prefabs;
+
+
 namespace CJ.SilkEngine.Test;
 
 public class MainGame : CJGame
@@ -17,6 +20,8 @@ public class MainGame : CJGame
     }
     public override void KeyDown(IKeyboard keyboard, Key key, int keyCode)
     {
+        if (key == Key.Escape)
+            GameWindow.Close();
     }
 
     public override void Update(float dt)

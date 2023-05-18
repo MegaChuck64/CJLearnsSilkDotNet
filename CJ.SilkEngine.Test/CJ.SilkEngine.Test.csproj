@@ -21,9 +21,5 @@
 		</Content>
 	</ItemGroup>
 
-	<ItemGroup>
-	  <None Remove="Assets\Shaders\defaultTexture.frag" />
-	  <None Remove="Assets\Shaders\defaultTexture.vert" />
-	  <None Remove="Assets\Textures\demo.png" />
-	</ItemGroup>
+
 </Project>

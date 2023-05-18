@@ -1,7 +1,7 @@
 ﻿using CJ.SilkEngine.GameObjects;
 using Silk.NET.Maths;
 
-namespace CJ.SilkEngine.Test;
+namespace CJ.SilkEngine.Test.Prefabs;
 
 public class PlayerPrefab : IPrefab
 {
