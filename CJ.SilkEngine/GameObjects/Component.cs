@@ -4,7 +4,7 @@ namespace CJ.SilkEngine.GameObjects;
 
 public abstract class Component : IDisposable
 {
-    public GameObject? Owner { get; private set; }
+    public GameObject Owner { get; private set; }
     public bool Enabled { get; set; } 
     
     public Component(GameObject owner, bool enabled = true)

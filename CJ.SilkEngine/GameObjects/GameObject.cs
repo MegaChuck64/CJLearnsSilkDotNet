@@ -29,6 +29,11 @@ public class GameObject : IDisposable
         Components.Add(component);
     }
 
+    public T? GetComponent<T>() where T : Component
+    {
+        return Components.FirstOrDefault(c => c is T) as T;
+    }
+
     public void Update(float deltaTime)
     {
         foreach (var component in Components.Where(c => c.Enabled))
